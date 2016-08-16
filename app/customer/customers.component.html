@@ -1,0 +1,9 @@
+<!--// [] property binding component to dom 
+// () event binding dom to component-->
+<!-- ul>li*3 -->
+<ul>
+    <li *ngFor="let c of customers"> <!-- Use when you have to manipulate data before output -->
+    <!--<li *ngFor="let c of customers | async"> for use with observables or promises -->
+        <app-customer [customer]="c"></app-customer>
+    </li>
+</ul>
