@@ -1,81 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 
+import { NodesService } from '../sharedservices/index';
+
 @Component({
     moduleId: module.id,
     selector: 'app-nodegraph',
-    template: `<div class="nodegraph" id="nodegraph"></div>`
+    template: `<div class="nodegraph" id="nodegraph"></div>`,
+    providers: [NodesService]
 })
 export class NodegraphComponent implements OnInit {
-    constructor() { }
+    constructor(private _nodesService: NodesService) { }
 
     ngOnInit() {
-        console.log("d3: ", d3);
-        this.drawGraph();
+        this._nodesService.getNodeGraphData().then((data) => {
+            this.drawGraph(data);
+        }).catch((err) => {
+            console.log(err); // customise
+        })
     }
 
-    private drawGraph = () => {
-        // Set up data
-        let data = {
-            "nodes": [
-                { "name": "X1", "colour": 10, "id": 1 },
-                { "name": "X2", "colour": 20, "id": 2 },
-                { "name": "X3", "colour": 30, "id": 3 },
-                { "name": "X4", "colour": 40, "id": 4 },
-                { "name": "X5", "colour": 50, "id": 5 },
-                { "name": "X6", "colour": 60, "id": 5 },
-                { "name": "X7", "colour": 70, "id": 6 },
-                { "name": "X8", "colour": 80, "id": 7 },
-                { "name": "X9", "colour": 90, "id": 7 },
-                { "name": "X10", "colour": 5, "id": 8 },
-                { "name": "X11", "colour": 10, "id": 9 },
-                { "name": "X12", "colour": 15, "id": 10 },
-                { "name": "X13", "colour": 20, "id": 11 },
-                { "name": "X14", "colour": 25, "id": 12 },
-                { "name": "X15", "colour": 30, "id": 12 },
-                { "name": "X16", "colour": 35, "id": 14 },
-                { "name": "X17", "colour": 40, "id": 15 },
-                { "name": "X18", "colour": 45, "id": 16 },
-                { "name": "X19", "colour": 50, "id": 17 },
-                { "name": "X20", "colour": 55, "id": 18 },
-                { "name": "X21", "colour": 60, "id": 19 },
-                { "name": "X22", "colour": 65, "id": 20 },
-                { "name": "X23", "colour": 70, "id": 21 },
-                { "name": "X24", "colour": 800, "id": 22 },
-                { "name": "X25", "colour": 900, "id": 23 },
-                { "name": "X26", "colour": 100, "id": 24 },
-                { "name": "X27", "colour": 10, "id": 25 }
-            ],
-            "links": [
-                { "source": 0, "target": 1, "value": 6, "label": "test" },
-                { "source": 0, "target": 12, "value": 6, "label": "test" },
-                { "source": 6, "target": 5, "value": 6, "label": "test" },
-                { "source": 8, "target": 5, "value": 6, "label": "test" },
-                { "source": 7, "target": 1, "value": 4, "label": "test" },
-                { "source": 8, "target": 10, "value": 3, "label": "test" },
-                { "source": 7, "target": 14, "value": 4, "label": "test" },
-                { "source": 8, "target": 15, "value": 6, "label": "test" },
-                { "source": 9, "target": 1, "value": 6, "label": "test" },
-                { "source": 10, "target": 1, "value": 6, "label": "test" },
-                { "source": 16, "target": 1, "value": 6, "label": "test" },
-                { "source": 16, "target": 2, "value": 5, "label": "test" },
-                { "source": 16, "target": 3, "value": 6, "label": "test" },
-                { "source": 16, "target": 4, "value": 6, "label": "test" },
-                { "source": 19, "target": 18, "value": 2, "label": "test" },
-                { "source": 18, "target": 1, "value": 6, "label": "test" },
-                { "source": 17, "target": 19, "value": 8, "label": "test" },
-                { "source": 18, "target": 11, "value": 6, "label": "test" },
-                { "source": 17, "target": 13, "value": 3, "label": "test" },
-                { "source": 20, "target": 13, "value": 3, "label": "test" },
-                { "source": 20, "target": 21, "value": 3, "label": "test" },
-                { "source": 22, "target": 20, "value": 3, "label": "test" },
-                { "source": 23, "target": 21, "value": 3, "label": "test" },
-                { "source": 23, "target": 24, "value": 3, "label": "test" },
-                { "source": 23, "target": 25, "value": 3, "label": "test" },
-                { "source": 23, "target": 26, "value": 3, "label": "test" }
-            ]
-        }
-
+    private drawGraph = (data: any) => {
         let margin = { top: -5, right: -5, bottom: -5, left: -5 };
         let width = parseInt(d3.select("#d3nodegraph-container").style("width"), 10) - margin.left - margin.right;
         let height = 500 - margin.top - margin.bottom;
