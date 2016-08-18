@@ -1,23 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import * as d3 from 'd3';
-
-import { NodesService } from '../sharedservices/index';
+import { NodesService } from '../sharedservices/nodes.service';
 
 @Component({
     moduleId: module.id,
     selector: 'app-nodegraph',
-    template: `<div class="nodegraph" id="nodegraph"></div>`,
-    providers: [NodesService]
+    template: `<div class="nodegraph" id="nodegraph" (window:resize)="onResize($event)"></div>`
 })
 export class NodegraphComponent implements OnInit {
+    @Input() nodegraphData: any;
+
     constructor(private _nodesService: NodesService) { }
 
     ngOnInit() {
-        this._nodesService.getNodeGraphData().then((data) => {
+    }
+
+    // If the window resizes
+    onResize(event: any) {
+        this.redrawGraph(this.nodegraphData);
+    }
+
+    // Watch nodegraphData for changes and redraw the graph if changed
+    ngOnChanges(changes: any) {
+        console.log("data changed: ", changes);
+        this.redrawGraph(changes.nodegraphData.currentValue);
+    }
+
+    private redrawGraph = (data: any) => {
+        if (data) {
+            // remove old nodegraph from container
+            d3.select(`#nodegraph`).html("");
             this.drawGraph(data);
-        }).catch((err) => {
-            console.log(err); // customise
-        })
+        }
     }
 
     private drawGraph = (data: any) => {

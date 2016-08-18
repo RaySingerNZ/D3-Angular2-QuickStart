@@ -5,20 +5,21 @@
             <div class="col-lg-12 text-center">
                 <h2 class="subheading">Node Graph</h2>
                 <div id="d3nodegraph-container">
-                    <app-nodegraph></app-nodegraph>
+                    <app-nodegraph [nodegraphData]="nodegraphData"></app-nodegraph>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="subheading">Node Table</h2>
+                <div>
+                    <ul>
+                        <li *ngFor="let node of nodes" >{{node.id}}</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Node Graph TODO -->
-<!--<section class="dashboard-container">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="subheading">Node Table</h2>
-            </div>
-        </div>
-    </div>
-</section>-->

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { NodesService } from './sharedservices/nodes.service';
+
 @Component({
     moduleId: module.id,
     selector: 'app',
     templateUrl: 'app.component.html',
-    directives: []
+    directives: [],
+    providers: [NodesService]
 })
 export class AppComponent {
 
