@@ -1,16 +1,16 @@
 <!-- Navigation -->
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle" (click)="showSideNav()"><i class="fa fa-bars"></i></a>
+<a id="menu-toggle" class="btn btn-dark btn-lg toggle" (click)="showSideNav()"><i class="fa fa-bars"></i></a>
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-light btn-lg pull-left toggle" (click)="hideSideNav()"><i class="fa fa-times"></i></a>
+        <a id="menu-close" class="btn btn-light btn-lg pull-left toggle" (click)="hideSideNav()"><i class="fa fa-times"></i></a>
         <li class="sidebar-brand">
             <a (click)="hideSideNav()">D3/Ng2</a>
         </li>
         <li>
-            <a href="#dashboard">Dashboard</a>
+            <a (click)="hideSideNav()" [routerLink]="['/']">Dashboard</a>
         </li>
         <li>
-            <a href="#about">About</a>
+            <a (click)="hideSideNav()" [routerLink]="['/customers']">Customers</a>
         </li>
     </ul>
 </nav>
@@ -22,8 +22,8 @@
     </div>
 </header>
 
-<!-- Components -->
-<app-dashboard></app-dashboard>
+<!-- ROUTES -->
+<router-outlet></router-outlet>
 
 <!-- Footer -->
 <footer>

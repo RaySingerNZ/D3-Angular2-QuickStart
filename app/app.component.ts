@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HTTP_PROVIDERS } from '@angular/http';
-
-import { CustomersComponent } from './customer/customers.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
     moduleId: module.id,
     selector: 'app',
     templateUrl: 'app.component.html',
-    directives: [CustomersComponent, DashboardComponent ],
-    providers: [HTTP_PROVIDERS]
+    directives: []
 })
 export class AppComponent {
 
