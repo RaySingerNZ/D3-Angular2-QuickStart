@@ -1,5 +1,5 @@
 {
-  "name": "angular2-quickstart",
+  "name": "D3-Angular2-QuickStart",
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "scripts": {
@@ -30,7 +30,6 @@
     "@angular/platform-browser":  "2.0.0-rc.5",
     "@angular/platform-browser-dynamic":  "2.0.0-rc.5",
     "@angular/router":  "3.0.0-rc.1",
-    "@angular/router-deprecated":  "2.0.0-rc.2",
     "@angular/upgrade":  "2.0.0-rc.5",
 
     "systemjs": "0.19.27",
