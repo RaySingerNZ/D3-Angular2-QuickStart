@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import * as d3 from 'd3';
 import { NodesService } from '../sharedservices/nodes.service';
+import { NodegraphModel } from '../sharedservices/nodes.model';
 
 @Component({
     moduleId: module.id,
@@ -8,7 +9,7 @@ import { NodesService } from '../sharedservices/nodes.service';
     template: `<div class="nodegraph" id="nodegraph" (window:resize)="onResize($event)"></div>`
 })
 export class NodegraphComponent implements OnInit {
-    @Input() nodegraphData: any;
+    @Input() nodegraphData: NodegraphModel;
 
     constructor(private _nodesService: NodesService) { }
 
@@ -26,7 +27,7 @@ export class NodegraphComponent implements OnInit {
         this.redrawGraph(changes.nodegraphData.currentValue);
     }
 
-    private redrawGraph = (data: any) => {
+    private redrawGraph = (data: NodegraphModel) => {
         if (data) {
             // remove old nodegraph from container
             d3.select(`#nodegraph`).html("");
@@ -34,11 +35,11 @@ export class NodegraphComponent implements OnInit {
         }
     }
 
-    private drawGraph = (data: any) => {
+    private drawGraph = (data: NodegraphModel) => {
         let margin = { top: -5, right: -5, bottom: -5, left: -5 };
         let width = parseInt(d3.select("#d3nodegraph-container").style("width"), 10) - margin.left - margin.right;
         let height = 500 - margin.top - margin.bottom;
-
+        
         let color = d3.scale.category20c();
 
         let force = d3.layout.force()
