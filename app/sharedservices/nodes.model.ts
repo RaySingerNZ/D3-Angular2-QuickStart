@@ -1,15 +1,15 @@
 export interface NodegraphModel {
-    nodes: Node[];
-    links: Link[];
+    nodes: NodeModel[];
+    links: LinkModel[];
 }
 
-export interface Node {
+export interface NodeModel {
     name: string;
     colour: number;
     id: number;
 }
 
-interface Link {
+interface LinkModel {
     source: number;
     target: number;
     value: number;

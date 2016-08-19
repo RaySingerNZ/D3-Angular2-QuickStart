@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { NodesService } from '../sharedservices/nodes.service';
+import { NodesService, NodegraphModel, NodeModel } from '../sharedservices/index';
 import { NodegraphComponent } from '../d3components/nodegraph.component';
-import { NodegraphModel, Node } from '../sharedservices/nodes.model';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,
@@ -12,17 +12,16 @@ import { NodegraphModel, Node } from '../sharedservices/nodes.model';
 })
 export class DashboardComponent implements OnInit {
     public nodegraphData: NodegraphModel;
-    public nodetableData: Node[];
+    public nodetableData: NodeModel[];
 
     constructor(private _nodesService: NodesService) { }
 
     ngOnInit() { 
-          this._nodesService.getNodegraphData().then((data: NodegraphModel) => {
+          this._nodesService.getNodegraph().then((data: NodegraphModel) => {
             this.nodegraphData = data;
             this.nodetableData = data.nodes;
         }).catch((err) => {
             console.log(err); // customise
         })
     }
-
 }

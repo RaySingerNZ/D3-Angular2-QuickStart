@@ -16,7 +16,9 @@
                 <h2 class="subheading">Node Table</h2>
                 <div>
                     <ul>
-                        <li *ngFor="let node of nodetableData" >{{node.name}}</li>
+                        <li *ngFor="let node of nodetableData">
+                            <a [routerLink]="['/nodedetails', node.name]">{{node.name}}</a>                            
+                        </li>
                     </ul>
                 </div>
             </div>
