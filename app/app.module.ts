@@ -8,6 +8,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { bind, provide } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
+import * as _ from 'lodash';
 import { APP_ROUTER_PROVIDER } from './routes';
 import { AppComponent }  from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';

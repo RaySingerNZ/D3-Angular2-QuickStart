@@ -40,7 +40,8 @@
 
     "angular2-in-memory-web-api": "0.0.15",
     "bootstrap": "^3.3.6",
-    "d3": "^3.5.17"
+    "d3": "^3.5.17",
+    "lodash": "4.15.0"
   },
   "devDependencies": {
     "concurrently": "^2.2.0",

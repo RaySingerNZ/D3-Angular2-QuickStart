@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { NodesService } from './sharedservices/nodes.service';
+import * as _ from 'lodash';
 
 @Component({
     moduleId: module.id,

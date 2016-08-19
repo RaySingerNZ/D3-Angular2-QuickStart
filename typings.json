@@ -4,6 +4,7 @@
     "core-js": "registry:dt/core-js#0.0.0+20160602141332",
     "d3": "registry:dt/d3#0.0.0+20160619032210",
     "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
+    "lodash": "registry:dt/lodash#4.14.0+20160817155621",
     "node": "registry:dt/node#6.0.0+20160807145350",
     "selenium-webdriver": "registry:dt/selenium-webdriver#2.44.0+20160317120654"
   }
