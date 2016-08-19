@@ -20,3 +20,23 @@ This very basic Angular2 app simply displays a D3 force directed graph.
 3. To run the TypeScript compiler, watch for changes, start the server, and launch the browser: ```npm start```
 
 ---
+
+## Installing Typings
+
+To install typings globally: ```npm install typings --g```
+
+Open the root of the web project in your terminal.
+
+Search for definitions.
+* ```typings search tape```
+
+Find an available definition (by name).
+* ```typings search --name react```
+
+Installing typings
+* ```typings install dt~mocha --global --save```
+
+To install typings references in the project
+* ```typings install```
+
+* [More info at Typings GitHub page](https://github.com/typings/typings)
