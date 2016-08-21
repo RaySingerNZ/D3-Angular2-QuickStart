@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let node of nodetableData">
+        <a [routerLink]="['/nodedetails', node.name]">{{node.name}}</a>
+    </li>
+</ul>

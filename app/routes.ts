@@ -8,7 +8,7 @@ export const appRoutes: RouterConfig = [
     // base href defined in index.html <base href="/"> {{#unless environment.production}}
     { path: '', component: DashboardComponent },
     { path: 'customers', component: CustomersComponent },
-    { path: 'nodedetails/:id', component: NodeDetailsComponent }
+    { path: 'nodedetails/:name', component: NodeDetailsComponent }
     // add about here
 ];
 
